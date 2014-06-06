@@ -1,0 +1,20 @@
+﻿Robert McDermot (rom66)
+Project 3
+
+Solution for rom66_1
+
+Pass phrase: pWiQDhpwxwvTLouvDMaRTJAVOtYEs
+
+In order to find the pass phrase for the first program, I made use of gdb.  I first set a break point at main() and disassembled the code there.  I noticed a repeating compare of 2 strings.  When examining the registers that held these 2 strings, I could see the string I had entered and an unknown string.  After attempting this string as the password, I had success.
+
+Solution for rom66_2
+
+Pass phrase: anything 9 characters or more and starting and ending with the same character.
+
+I set a break point at main to start but found almost no code in there other than to call d().  When examining the code in d(), there were calls made to several other methods.  I saw that the input string was put into $ebx so I stepped through the code and tracked what happened to the contents of that register.  Method r() will check if the first and last letters are the same and if they are, return 1 else it will return 0.  The remainder of d() will check that the return from r is 1 and that the pass phrase is at least 9 characters (s() getting the length of the input).
+
+Solution for rom66_3
+
+
+
+Since this executable has been stripped of non-exported symbols (such as main()), you first have to find the address of the entry point and then the address of main().
